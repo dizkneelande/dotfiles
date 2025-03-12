@@ -1,0 +1,88 @@
+## -----------------------------------
+##
+## ---- bspwm keybindings ------------
+##
+## -----------------------------------
+
+
+## -- Launchers ----
+
+# Terminal
+super + Return
+    xfce4-terminal 
+
+# Rofi
+super + {ctrl +,shift + }Return
+	{rofi -show run, rofi -show drun}
+
+# Apps
+super + {e,b}
+	{nemo,firefox}
+
+# Screenshot
+super + Print
+	gnome-screenshot --interactive
+
+# Logout
+super + shift + e
+	archlinux-logout
+
+## -- Bspwm ----
+
+# Reload sxhkd
+#super + Escape
+#	bspc quit
+
+# Quit/restart bspwm
+super + shift + {e,r}
+	bspc {pkill -USR1 -x sxhkd,wm -r}
+
+# Close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# Kill window
+ctrl + alt + Escape
+	xkill
+
+# Lock screen
+ctrl + alt + l
+	betterlockscreen --lock
+
+# Switch workspace or Send focused Node to another workspace
+super + {_,shift + }{1-8}
+        bspc {desktop -f,node -d} '^{1-8}' '--follow'
+
+# Change focus of the Node or Swap Nodes
+super + {_,shift + }{Left,Down,Up,Right}
+        bspc node -{f,s} {west,south,north,east}
+
+# Toggle Fullscreen
+super + f
+    bspc node -t "~"fullscreen
+
+# Toggle beetwen floating & tiled
+super + t
+    bspc node -t "~"{floating,tiled}
+
+# Change focus to next window, including floating window
+alt + {_,shift + }Tab
+        bspc node -f {next.local,prev.local}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+
+## -- Function ----
+XF86MonBrightnessUp
+	brightnessctl set +10%
+
+XF86MonBrightnessDown
+	brightnessctl set 10%-
+
+XF86AudioRaiseVolume
+	pamixer -i 5	
+
+XF86AudioLowerVolume
+	pamixer -d 5
