@@ -5,26 +5,31 @@
 pgrep -x sxhkd > /dev/null || sxhkd & 
 picom --config /home/nell/.config/picom/picom.conf & 
 nitrogen --restore & 
-#xfce4-power-manager & 
+xfce4-power-manager & 
 xsetroot -cursor_name left_ptr &
 setxkbmap -option caps:ctrl_modifier &
-xrandr --output eDP-1 --primary --output DP-2 --below eDP-1 &
-#xinput set-prop "Synaptics TM3381-002" "Device Enabled" 0 &
-#xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" 1.0 &
+#xrandr --output DP-2-3 --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal &
+xrandr --output DP-2-3 --pos 0x0 &
+xrandr --output eDP-1 --pos 0x1080 &
+#./screenlayout.sh &
+dropbox start &
+xinput set-prop "Synaptics TM3625-010" "Device Enabled" 0 &
+xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" 0.7 &
 #xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Profile Enabled" 1 &
-#nm-applet &
-#blueman-applet &
+nm-applet &
+blueman-applet &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 #xrandr --output eDP-1 --primary --auto --left-of HDMI-2 &
 
 ## -- Polybar ----
-#pkill polybar
-#polybar &
+pkill polybar
+polybar &
 
 
 ## -- Monitors ----
-bspc monitor -d 1 2 3 4 5 6 7 8 
-
+#bspc monitor -d 1 2 3 4 5 6 7 8 
+bspc monitor eDP-1 -d        
+bspc monitor DP-2-3 -d 
 
 ## -- Bspwm  ----
 bspc config border_width         2
@@ -47,7 +52,7 @@ bspc config normal_border_color    "#414868"
 #bspc rule -a mplayer2 state=floating
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
-bspc rule -a nemo state=floating
+bspc rule -a thunar state=floating
 bspc rule -a polkit-gnome state=floating
 bspc rule -a mpv state=floating
 bspc rule -a <WM_CLASS> state=floating

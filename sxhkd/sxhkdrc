@@ -12,16 +12,16 @@ super + Return
     xfce4-terminal 
 
 # Rofi
-super + {ctrl +,shift + }Return
+super + {_,shift + }d
 	{rofi -show run, rofi -show drun}
 
 # Apps
 super + {e,b}
-	{nemo,firefox}
+	{thunar,firefox}
 
 # Screenshot
 super + Print
-	gnome-screenshot --interactive
+    xfce4-screenshooter	
 
 # Logout
 super + shift + e
@@ -52,6 +52,9 @@ ctrl + alt + l
 # Switch workspace or Send focused Node to another workspace
 super + {_,shift + }{1-8}
         bspc {desktop -f,node -d} '^{1-8}' '--follow'
+#super + {_,shift + }{1-8}
+#        bspc {desktop --focus,node --to-desktop}'{1,2,3,4,5,6,7,8}' '--follow'
+
 
 # Change focus of the Node or Swap Nodes
 super + {_,shift + }{Left,Down,Up,Right}
