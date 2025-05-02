@@ -1,0 +1,1 @@
+lxappearance nitrogen picom polybar bspwm sxhkd gtk2-engines-murrine caffeine vim git neofetch blueman brightnessctl pavucontrol pamixer arandr geany
